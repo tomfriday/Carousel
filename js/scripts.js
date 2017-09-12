@@ -1,15 +1,13 @@
-var carouselList;
+var liList;
+var carouselList = $('#carousel ul');
 
 function changeOneSlide() {
-    var carouselList = $('#carousel ul');
     carouselList.animate({
         marginLeft: -400
     }, 2000, 'swing', toFirstSlide);
 
 }
-
 function toFirstSlide() {
-    var carouselList = $('#carousel ul');
     var firstSlide = carouselList.find('li:first');
     var lastSlide = carouselList.find('li:last');
     lastSlide.after(firstSlide);
@@ -19,15 +17,13 @@ function toFirstSlide() {
     colorize();
 }
 
-function Left() {
-    var carouselList = $('#carousel ul');
-    carouselList.css({
+function left() {
+   carouselList.css({
         marginLeft: 0
     });
 }
 
 function toLeft() {
-    var carouselList = $('#carousel ul');
     var firstSlide = carouselList.find('li:first');
     var lastSlide = carouselList.find('li:last');
     firstSlide.before(lastSlide);
@@ -36,7 +32,7 @@ function toLeft() {
     });
     carouselList.animate({
         marginLeft: 0
-    }, 2000, 'swing', Left);
+    }, 2000, 'swing', left);
     colorize();
 }
 $(function () {
@@ -53,25 +49,27 @@ $(function () {
         }
     })
     setInterval(changeOneSlide, 6000);
-    carouselList = $('#carousel ul li');
+liList = $('#carousel ul li');
     colorize();
 });
 
 
 
 function colorize() {
-
+ 
     var firstSlide = $('#carousel ul li').eq(0);
     var circleList = $('#carousel i');
 
     for (var i = 0; i <= 4; i++) {
-        if (carouselList.eq(i).is(firstSlide)) {
-            circleList.eq(i).css('color', 'red').css('font-size', '0.9em');
-            circleList.eq(i).css('margin-top', '-2px');
+        if (liList.eq(i).is(firstSlide)) {
+            circleList.eq(i).css('color', 'red')
+                .css('font-size', '0.9em')
+                .css('margin-top', '-2px');
 
         } else {
-            circleList.eq(i).css('color', 'lightgrey').css('font-size', '10px');
-            circleList.eq(i).css('margin-top', '0');
+            circleList.eq(i).css('color', 'lightgrey')
+                .css('font-size', '10px')
+                .css('margin-top', '0');
         }
     }
 };
