@@ -1,4 +1,4 @@
-var liList;
+var liList = $('#carousel ul li');
 var carouselList = $('#carousel ul');
 
 function changeOneSlide() {
@@ -7,6 +7,7 @@ function changeOneSlide() {
     }, 2000, 'swing', toFirstSlide);
 
 }
+
 function toFirstSlide() {
     var firstSlide = carouselList.find('li:first');
     var lastSlide = carouselList.find('li:last');
@@ -18,7 +19,7 @@ function toFirstSlide() {
 }
 
 function left() {
-   carouselList.css({
+    carouselList.css({
         marginLeft: 0
     });
 }
@@ -49,14 +50,13 @@ $(function () {
         }
     })
     setInterval(changeOneSlide, 6000);
-liList = $('#carousel ul li');
     colorize();
 });
 
 
 
 function colorize() {
- 
+
     var firstSlide = $('#carousel ul li').eq(0);
     var circleList = $('#carousel i');
 
